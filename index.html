@@ -28,6 +28,17 @@
         obj.instance.exports.logIt()
       })
 
+      const global = new WebAssembly.Global({value: "i32", mutable: true}, 0)
+      const importObject2 = {js: {global}}
+      WebAssembly
+      .instantiateStreaming(
+        fetch("global.wasm"),
+        importObject2
+      ).then((obj) => {
+        console.log(obj.instance.exports.getGlobal())
+        obj.instance.exports.incGlobal()
+        console.log(obj.instance.exports.getGlobal())
+      })
     </script>
   </body>
 </html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>web assembly string</title>
+  </head>
+  <body>
+    <script type="module">
+      const memory = new WebAssembly.Memory({ initial: 1})
+
+      function consoleLogString(offset, length){
+        const bytes = new Uint8Array(memory.buffer, offset, length)
+        const string = new TextDecoder("utf8").decode(bytes)
+        console.log(string)
+      }
+
+      const importObject = {
+        console: { log: consoleLogString },
+        js: { mem: memory }
+      }
+
+      WebAssembly.instantiateStreaming(
+        fetch("string.wasm"), 
+        importObject
+      ).then((obj) => {
+        obj.instance.exports.writeHi()
+      })
+    </script>
+  </body>
+</html>
