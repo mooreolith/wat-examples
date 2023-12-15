@@ -8,6 +8,26 @@
       WebAssembly.instantiateStreaming(fetch("module.wasm")).then(obj => {
         console.log(obj.instance.exports.add(1, 2))
       })
+
+      WebAssembly.instantiateStreaming(fetch("getAnswer.wasm")).then(obj => {
+        console.log(obj.instance.exports.getAnswerPlus1())
+      })
+
+      const importObject = {
+        console: {
+          log(arg){
+            console.log(arg)
+          }
+        }
+      }
+      WebAssembly
+      .instantiateStreaming(
+        fetch("import.wasm"), 
+        importObject
+      ).then((obj) => {
+        obj.instance.exports.logIt()
+      })
+
     </script>
   </body>
 </html>
