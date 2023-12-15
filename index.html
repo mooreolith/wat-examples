@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>wat</title>
+  </head>
+  <body>
+    <script type="module">
+      WebAssembly.instantiateStreaming(fetch("module.wasm")).then(obj => {
+        console.log(obj.instance.exports.add(1, 2))
+      })
+    </script>
+  </body>
+</html>
