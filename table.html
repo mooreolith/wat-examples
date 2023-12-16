@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>web assembly string</title>
+  </head>
+  <body>
+    <script type="module">
+      /*
+    function setupTable(){
+      const tbl = new WebAssembly.Table({initial: 2, element: "anyfunc"})
+
+      const f1 = () => console.log("Hello ",)
+      const f2 = () => console.log("Worlds")
+
+      tbl.set(0, f1)
+      tbl.set(1, f2)
+
+      return table
+    }
+    */
+
+    WebAssembly.instantiateStreaming(
+      fetch('table.wasm'),
+    ).then((obj) => {
+      console.log(obj.instance.exports.callByIndex(0))
+      console.log(obj.instance.exports.callByIndex(1))
+      console.log(obj.instance.exports.callByIndex(2))
+    })
+    </script>
+  </body>
+</html>
