@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>web assembly variable operations</title>
+  </head>
+  <body>
+    <p>Check the console for output</p>
+    <a href="/">Back to index</a>
+    <script type="module">
+    const number = new WebAssembly.Global({value: "i32", mutable: true}, 100)
+    const secondNumber = new WebAssembly.Global({value: 'i32', mutable: true}, 5)
+    const importObject = {env: {number, secondNumber}}
+    WebAssembly.instantiateStreaming(
+      fetch('variables.wasm'),
+      importObject
+    ).then((obj) => {
+      console.log('declare local $num 4:', obj.instance.exports.declare_local(4))
+      console.log('get local $num:', obj.instance.exports.get_local())
+      console.log('set local $num:', obj.instance.exports.set_local())
+      console.log('tee local:', obj.instance.exports.tee_local())
+      
+      console.log('declare global $big 8:', obj.instance.exports.declare_global())
+      console.log(importObject.env.number)
+      /*console.log('get global $big:', obj.instance.exports.get_global())
+      console.log('set local $big 16:', obj.instance.exports.set_local())*/
+    })
+    </script>
+  </body>
+</html>
