@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>web assembly arithmetic</title>
+  </head>
+  <body>
+    <p>Check the console for output</p>
+    <a href="/">Back to index</a>
+    <script type="module">
+    WebAssembly.instantiateStreaming(
+      fetch('arithmetic.wasm'),
+    ).then((obj) => {
+      console.log('addition 1 1:', obj.instance.exports.add(1, 1))
+      console.log('subtraction 1 1:', obj.instance.exports.subtract(1, 1))
+      console.log('multiplication 2 2:', obj.instance.exports.multiply(2, 2))
+      console.log('division 2 2:', obj.instance.exports.divide(2, 2))
+      console.log('remainder 2 2:', obj.instance.exports.remainder(2, 2))
+    })
+    </script>
+  </body>
+</html>

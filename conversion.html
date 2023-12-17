@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>web assembly conversion</title>
+  </head>
+  <body>
+    <p>Check the console for output</p>
+    <a href="/">Back to index</a>
+    <script type="module">
+    WebAssembly.instantiateStreaming(
+      fetch('conversion.wasm'),
+    ).then((obj) => {
+      console.log('extend:', obj.instance.exports.extend(1))
+      console.log('wrap:', obj.instance.exports.wrap(1n))
+      console.log('promote:', obj.instance.exports.promote(1.0))
+      console.log('demote:', obj.instance.exports.demote(1.0))
+      console.log('convert 1:', obj.instance.exports.convert(1))
+      console.log('truncate 1.0:', obj.instance.exports.truncate(1.0))
+      console.log('reinterpret 1.05:', obj.instance.exports.reinterpret(1.05))
+    })
+    </script>
+  </body>
+</html>

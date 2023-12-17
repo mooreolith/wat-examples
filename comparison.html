@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>web assembly comparison</title>
+  </head>
+  <body>
+    <p>Check the console for a true (1), followed by a false (0). </p>
+    <a href="/">Back to index</a>
+    <script type="module">
+    WebAssembly.instantiateStreaming(
+      fetch('comparison.wasm'),
+    ).then((obj) => {
+      console.log('equal to (42, 42):', obj.instance.exports.equal(42, 42))
+      console.log('equal to (42, 1):', obj.instance.exports.equal(42, 1))
+      
+      console.log('not equal to (42, 42):', obj.instance.exports.not_equal(42, 42))
+      console.log('not equal to (42, 1):', obj.instance.exports.not_equal(42, 1))
+
+      console.log('greater than (42, 42):', obj.instance.exports.greater_than(42, 42))
+      console.log('greater than (42, 1):', obj.instance.exports.greater_than(42, 1))
+    
+      console.log('less than (42, 42):', obj.instance.exports.less_than(42, 42))
+      console.log('less than (1, 42):', obj.instance.exports.less_than(1, 42))
+    
+      console.log('greater than or equal (1, 42):', obj.instance.exports.greater_than_or_equal(1, 42))
+      console.log('greater than or equal (42, 42):', obj.instance.exports.greater_than_or_equal(42, 42))
+      console.log('greater than or equal (42, 1):', obj.instance.exports.greater_than_or_equal(42, 1))
+    
+      console.log('less than or equal (1, 42):', obj.instance.exports.less_than_or_equal(1, 42))
+      console.log('less than or equal (42, 42):', obj.instance.exports.less_than_or_equal(42, 42))
+      console.log('less than or equal (42, 1):', obj.instance.exports.less_than_or_equal(42, 1))
+    })
+    </script>
+  </body>
+</html>
