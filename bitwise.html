@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>web assembly bitwise operations</title>
+  </head>
+  <body>
+    <p>Check the console for output</p>
+    <a href="/">Back to index</a>
+    <script type="module">
+    WebAssembly.instantiateStreaming(
+      fetch('bitwise.wasm'),
+    ).then((obj) => {
+      console.log('and 1 2:', obj.instance.exports.and(1, 2))
+      console.log('or 1 2:', obj.instance.exports.or(1, 2))
+      console.log('xor 1 0:', obj.instance.exports.xor(1, 0))
+      console.log('left_shift 1:', obj.instance.exports.shift_left(1, 2))
+      console.log('right_shift 1:', obj.instance.exports.shift_right(1, 2))
+      console.log('left_rotate 1:', obj.instance.exports.rotate_left(1, 2))
+      console.log('right_rotate 1:', obj.instance.exports.rotate_right(1, 2))
+      console.log('count_leading_zeros 2:', obj.instance.exports.count_leading_zeros(2))
+      console.log('count_trailing_zeros 2:', obj.instance.exports.count_trailing_zeros(2))
+      console.log('population_count 3:', obj.instance.exports.population_count(3))
+    })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>web assembly floating point operations</title>
+  </head>
+  <body>
+    <p>Check the console for output</p>
+    <a href="/">Back to index</a>
+    <script type="module">
+    WebAssembly.instantiateStreaming(
+      fetch('floating-point.wasm'),
+    ).then((obj) => {
+      console.log('min 4 3:', obj.instance.exports.min(4, 3))
+      console.log('max 4 3:', obj.instance.exports.max(4, 3))
+      console.log('nearest 4.3:', obj.instance.exports.nearest(4.3))
+      console.log('ceiling 4.3:', obj.instance.exports.ceiling(4.3))
+      console.log('floor 4.3:', obj.instance.exports.floor(4.3))
+      console.log('truncate 4.3:', obj.instance.exports.truncate(4.3))
+      console.log('absolute', obj.instance.exports.absolute(4.3))
+      console.log('negate 4.3', obj.instance.exports.negate(4.3))
+      console.log('square_root', obj.instance.exports.square_root(4.3))
+      console.log('copy_sign', obj.instance.exports.copy_sign(4.3, -0))
+    })
+    </script>
+  </body>
+</html>

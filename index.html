@@ -6,11 +6,11 @@
   <body>
     <script type="module">
       WebAssembly.instantiateStreaming(fetch("module.wasm")).then(obj => {
-        console.log(obj.instance.exports.add(1, 2))
+        console.log("exports add 1 2:", obj.instance.exports.add(1, 2))
       })
 
       WebAssembly.instantiateStreaming(fetch("getAnswer.wasm")).then(obj => {
-        console.log(obj.instance.exports.getAnswerPlus1())
+        console.log("exports getAnswerPlus1:", obj.instance.exports.getAnswerPlus1())
       })
 
       const importObject = {
@@ -25,6 +25,7 @@
         fetch("import.wasm"), 
         importObject
       ).then((obj) => {
+        console.log("importObject log...")
         obj.instance.exports.logIt()
       })
 
@@ -35,9 +36,9 @@
         fetch("global.wasm"),
         importObject2
       ).then((obj) => {
-        console.log(obj.instance.exports.getGlobal())
-        obj.instance.exports.incGlobal()
-        console.log(obj.instance.exports.getGlobal())
+        console.log("getGlobal:", obj.instance.exports.getGlobal())
+        console.log("incGlobal():", obj.instance.exports.incGlobal())
+        console.log("getGlobal:", obj.instance.exports.getGlobal())
       })
     </script>
 
@@ -47,9 +48,15 @@
       <ul>
         <li><a href="/string.html">string</a></li>
         <li><a href="/table.html">table</a></li>
+      </ul>
+
+      <label for=".numerics">Numeric operations</label>
+      <ul class="numerics">
         <li><a href="/comparison.html">comparison</a></li>
         <li><a href="/arithmetic.html">arithmetic</a></li>
         <li><a href="/conversion.html">conversion</a></li>
+        <li><a href="/floating-point.html">floating point</a></li>
+        <li><a href="/bitwise.html">bitwise</a></li>
       </ul>
     </p>
   </body>
