@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>web assembly variable operations</title>
+  </head>
+  <body>
+    <p>Check the console for output</p>
+    <a href="/">Back to index</a>
+    <script type="module">
+      const memory = new WebAssembly.Memory({initial: 1, maximum: 2})
+      WebAssembly
+      .instantiateStreaming(fetch('memory.wasm'))
+      .then((obj) => {
+        console.log('grow:', obj.instance.exports.grow())
+        console.log('size:', obj.instance.exports.size())
+        console.log('load:', obj.instance.exports.load())
+        console.log('store:', obj.instance.exports.store())
+        console.log('load:', obj.instance.exports.load())
+      })
+    </script>
+  </body>
+</html>
