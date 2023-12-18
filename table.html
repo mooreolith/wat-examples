@@ -28,8 +28,8 @@
       console.log(obj.instance.exports.callByIndex(1))
       try{
         console.log(obj.instance.exports.callByIndex(2))
-      }catch(RuntimeError){
-        console.error("Anticipated RuntimeError caught.")
+      }catch(error){
+        console.log("Anticipated RuntimeError caught:", error)
       }
     })
     </script>

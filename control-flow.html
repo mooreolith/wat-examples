@@ -1,21 +1,47 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>web assembly variable operations</title>
+    <title>web assembly control flow</title>
   </head>
   <body>
     <p>Check the console for output</p>
     <a href="/">Back to index</a>
     <script type="module">
-      const memory = new WebAssembly.Memory({initial: 1, maximum: 2})
+      const importObject = {
+        console: {
+          log: function(i){
+            console.log(i)
+          }
+        },
+        env: {
+          greet: () => console.log('Hello, World!')
+        }
+      }
+      
       WebAssembly
-      .instantiateStreaming(fetch('memory.wasm'))
+      .instantiateStreaming(fetch('control-flow.wasm'), importObject)
       .then((obj) => {
-        console.log('grow:', obj.instance.exports.grow())
-        console.log('size:', obj.instance.exports.size())
-        console.log('load:', obj.instance.exports.load())
-        console.log('store:', obj.instance.exports.store())
-        console.log('load:', obj.instance.exports.load())
+        console.log('block 0:', obj.instance.exports.block(0))
+        console.log('block 1:', obj.instance.exports.block(1))
+        console.log('block 10:', obj.instance.exports.block(10))
+        console.log('branch:', obj.instance.exports.branch(0))
+        console.log('call:', obj.instance.exports.call())
+        obj.instance.exports.drop()
+        console.log('end:', obj.instance.exports.end(0))
+        console.log('end:', obj.instance.exports.end(1))
+        console.log('if 1 then 10 else 0 (0):', obj.instance.exports.ifelse(0))
+        console.log('if 1 then 10 else 0 (1):', obj.instance.exports.ifelse(1))
+        obj.instance.exports.loop(20)
+        obj.instance.exports.loop(10)
+        console.log('nop:', obj.instance.exports.nothing())
+        console.log('return:', obj.instance.exports.return())
+        console.log('select (0):', obj.instance.exports.select(0))
+        console.log('select (1):', obj.instance.exports.select(1))
+        try{
+          console.log('unreachable:', obj.instance.exports.unreachable())
+        }catch(error){
+          console.log('Anticipated RuntimeError caught: ', error)
+        }
       })
     </script>
   </body>
