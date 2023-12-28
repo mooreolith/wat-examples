@@ -29,4 +29,4 @@ You will also need a webserver installed. Python3's http.server is sufficient.
 Oh, and a browser.
 
 ## License
-Feel free to use this. 
+Feel free to use this.
