@@ -12,3 +12,10 @@ python3 -m http.server
 from this directory. 
 
 The action happens in the console. The different html files explore different aspects of the tutorial.
+
+## Compiling
+To compile a wat file to wasm, run 
+```
+wat2wasm control-flow.wat
+```
+to get a file called control-flow.wasm. 
