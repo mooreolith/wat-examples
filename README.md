@@ -25,3 +25,5 @@ On debian/ubuntu, you can install wat2wasm using
 ```bash
 sudo apt-get install wabt
 ```
+You will also need a webserver installed. Python3's http.server is sufficient.
+Oh, and a browser.
