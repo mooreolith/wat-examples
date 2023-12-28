@@ -4,8 +4,13 @@
     <title>web assembly string</title>
   </head>
   <body>
-    <p>Check console for "Hi"</p>
-    <a href="/">Back to index</a>
+    <header>
+      <a href="/">Back to index</a>
+      <h1>wat reference</h1>
+      <h2>string</h2>
+    </header>
+    <p>string.wat shows how to pass a string through memory to the console.log
+       function. Check console for the word "Hi".</p>
     <script type="module">
       const memory = new WebAssembly.Memory({ initial: 1})
 

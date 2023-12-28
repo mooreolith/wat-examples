@@ -4,8 +4,16 @@
     <title>web assembly floating point operations</title>
   </head>
   <body>
+    <header>
+      <a href="/">Back to index</a>
+      <h1>wat reference</h1>
+      <h2>floating point operations</h2>
+    </header>
+    <p>These function calls demonstrate the floating point operations 
+      available in web assembly: min, max, nearest, ceiling, floor, truncate, 
+      absolute, negate, square root, and copy sign. 
+    </p>
     <p>Check the console for output</p>
-    <a href="/">Back to index</a>
     <script type="module">
     WebAssembly.instantiateStreaming(
       fetch('floating-point.wasm'),

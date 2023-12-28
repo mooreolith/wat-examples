@@ -4,8 +4,16 @@
     <title>web assembly conversion</title>
   </head>
   <body>
+    <header>
+      <a href="/">Back to index</a>
+      <h1>wat reference</h1>
+      <h2>conversion operations</h2>
+    </header>
+    <p>These functions deal with the size differences between number types
+      such as i32 and i64 as well as f32 and f64. The functions used are:
+      extend, wrap, promote, demote, convert, truncate, and reinterpret.
+    </p>
     <p>Check the console for output</p>
-    <a href="/">Back to index</a>
     <script type="module">
     WebAssembly.instantiateStreaming(
       fetch('conversion.wasm'),

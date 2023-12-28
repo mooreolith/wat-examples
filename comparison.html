@@ -4,8 +4,15 @@
     <title>web assembly comparison</title>
   </head>
   <body>
+    <header>
+      <a href="/">Back to index</a>
+      <h1>wat reference</h1>
+      <h2>comparison operations</h2>
+    </header>
+    <p>These experiments go through the different comparison functions. The functions tested are
+      equal, not equal, greater than, less than, greater than or equal to, and less than or equal to. 
+    </p>
     <p>Check the console for a true (1), followed by a false (0). </p>
-    <a href="/">Back to index</a>
     <script type="module">
     WebAssembly.instantiateStreaming(
       fetch('comparison.wasm'),

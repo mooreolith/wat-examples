@@ -4,8 +4,13 @@
     <title>web assembly memory operations</title>
   </head>
   <body>
+    <header>
+      <a href="/">Back to index</a>
+      <h1>wat reference</h1>
+      <h2>memory operations</h2>
+    </header>
+    <p>There are four memory functions: grow, size, load, store.</p>
     <p>Check the console for output</p>
-    <a href="/">Back to index</a>
     <script type="module">
       const memory = new WebAssembly.Memory({initial: 1, maximum: 2})
       WebAssembly

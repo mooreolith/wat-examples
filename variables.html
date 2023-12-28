@@ -4,8 +4,15 @@
     <title>web assembly variable operations</title>
   </head>
   <body>
+    <header>
+      <a href="/">Back to index</a>
+      <h1>wat reference</h1>
+      <h2>variable commands</h2>
+    </header>
+    <p>This page demonstrates the use of the variable functions, local, local.get, 
+      local.set, as well as global, global.get, and global.set.
+    </p>
     <p>Check the console for output</p>
-    <a href="/">Back to index</a>
     <script type="module">
     const number = new WebAssembly.Global({value: "i32", mutable: true}, 100)
     const secondNumber = new WebAssembly.Global({value: 'i32', mutable: true}, 5)

@@ -1,11 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>web assembly string</title>
+    <title>web assembly table</title>
   </head>
   <body>
-    <p>Check the console for a 42, followed by a 13, followed by an <em>Uncaught RuntimeError: index out of bounds</em> error. That's supposed to be there. The first two function calls succeeded, and there are no more than two functions defined in the module, so calling for the third function causes this error. 
-    <a href="/">Back to index</a>
+    <header>
+      <a href="/">Back to index</a>
+      <h1>wat reference</h1>
+      <h2>table</h2>
+    </header>
+    <p>This experiment places two "function pointers" in a table, from which
+      they can be accessed by index, and executed.
+    </p>
+    <p>Check the console for a 42, followed by a 13, followed by an 
+      <em>Uncaught RuntimeError: index out of bounds</em> error. That's 
+      supposed to be there. The first two function calls succeeded, and 
+      there are no more than two functions defined in the module, so 
+      calling for the third function causes this error. 
+    </p>
     <script type="module">
       /*
     function setupTable(){
