@@ -15,7 +15,13 @@ The action happens in the console. The different html files explore different as
 
 ## Compiling
 To compile a wat file to wasm, run 
-```
+```bash
 wat2wasm control-flow.wat
 ```
 to get a file called control-flow.wasm. 
+
+## Dependencies
+On debian/ubuntu, you can install wat2wasm using 
+```bash
+sudo apt-get install wabt
+```
